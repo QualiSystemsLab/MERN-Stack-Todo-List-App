@@ -5,7 +5,7 @@ inputs:
 
 infrastructure:
   connectivity:
-    external:
+    internal:
       - port_info:
           port: 80
           path: ''

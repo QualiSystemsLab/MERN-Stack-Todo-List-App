@@ -25,4 +25,15 @@ applications:
         - mongodb
   - mongodb:
 ingress:
-  enabled: false  
+  listeners:
+    - http: 80
+      rules:
+        - application: todo-ui
+          port: 80
+          default: true
+    - http: 7000
+      rules:
+        - path: /todos
+          application: todo-api
+          port: 7000
+  
