@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const REVERSE_PROXY_URL = window.origin // USING A REVERSE PROXY
+const REVERSE_PROXY_URL = `${window.origin}:7000` // USING BLUEPRINT INGRESS
 
 const Todo = props => (
     <tr>

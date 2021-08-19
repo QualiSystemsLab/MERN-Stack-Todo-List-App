@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import axios from 'axios';
 
-const REVERSE_PROXY_URL = window.origin // USING A REVERSE PROXY
+const REVERSE_PROXY_URL = `${window.origin}:7000` // USING BLUEPRINT INGRESS
 
 export default class EditTodo extends Component {
 
