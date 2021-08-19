@@ -28,6 +28,6 @@ ingress:
   listeners:
     - http: 80
       rules:
-        - application: nectar-ui
+        - application: todo-ui
           shortcut: ${torque.environment.public_address}
           default: true  
