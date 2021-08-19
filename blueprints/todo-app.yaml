@@ -28,8 +28,6 @@ ingress:
   listeners:
     - http: 80
       rules:
-        - host: ${torque.environment.public_address}
-          path: /
-          application: nectar-ui
+        - application: nectar-ui
           shortcut: ${torque.environment.public_address}
           default: true  
