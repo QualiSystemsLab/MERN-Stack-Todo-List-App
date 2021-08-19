@@ -1,0 +1,52 @@
+kind: blueprint
+spec_version: 1
+
+clouds:
+- aws/kubernetes-testing
+
+applications:
+- nectar-web
+- nectar-api
+
+artifacts:
+- nectar-web: 'nectar/nectar-web.py'
+- nectar-api: 'nectar/nectar-api.py'
+
+services:
+  - dns-a-record-set:
+      input_values:
+        - DOMAIN: $DOMAIN
+        - HOST: '${colony.sandboxId}-nectar.${DOMAIN}'
+        - SANDBOX_PUBLIC_ADDRESS: $colony.environment.public_address
+      depends_on: 
+        - nectar-web
+        - nectar-api
+
+inputs:
+- DOMAIN
+- CERT_ARN
+
+ingress:
+  listeners:
+    - http: 80
+      redirect_to_listener: 443
+    - https: 443
+      certificate: $CERT_ARN
+      rules:
+      - host: ${colony.sandboxId}-nectar.${DOMAIN}
+        path: /api/index
+        application: nectar-api
+        shortcut: ${colony.sandboxId}.nectar-api.com
+        port: 3001
+      - host: ${colony.sandboxId}-nectar.${DOMAIN}
+        path: /api/home
+        application: nectar-api
+        shortcut: ${colony.sandboxId}-api.nectar.com
+        port: 3001
+      - host: ${colony.sandboxId}-nectar.${DOMAIN}
+        application: nectar-web
+        port: 3000
+
+debugging:
+  show_tf_plan: true
+  bastion_availability: enabled-on
