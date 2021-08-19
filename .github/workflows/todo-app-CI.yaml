@@ -24,7 +24,7 @@ jobs:
       - run: docker-compose push
   integration-test:
     runs-on: ubuntu-latest
-    needs: build
+    #needs: build
     steps:
       - name: Print result URL
         run: echo "$GITHUB_RUN_ID"
