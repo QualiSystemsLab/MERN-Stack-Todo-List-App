@@ -31,3 +31,7 @@ ingress:
         - host: ${torque.environment.public_address}
           application: todo-ui
           shortcut: ${torque.environment.public_address}
+    - http: 7000
+      rules:
+        - host: ${torque.environment.public_address}
+          application: todo-api
