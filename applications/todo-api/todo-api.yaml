@@ -8,11 +8,11 @@ infrastructure:
     internal:
       - port_info:
           port: 7000
-          path: ''
   compute:
     spec:        
-      kubernetes:
+       kubernetes:
         cpu: 250m
+        ram: 64Mi
 configuration:
   initialization:
     script: todo-api.sh
@@ -23,7 +23,6 @@ configuration:
     wait_for_ports: ALL
 source:
   image:    
-    username: adminuser
     docker_image:
        - name: colonysamples/todo-api
          tag: $DOCKER_TAG
