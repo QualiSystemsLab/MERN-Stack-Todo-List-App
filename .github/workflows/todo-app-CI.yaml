@@ -11,7 +11,7 @@ jobs:
       with:
         space: Trial
         files_list: blueprints/todo-app.yaml
-        colony_token: ${{ secrets.COLONY_TOKEN }}
+        colony_token: ${{ secrets.TORQUE_TOKEN }}
   build:
     needs: validate
     runs-on: ubuntu-latest
