@@ -32,9 +32,9 @@ jobs:
         id: start-sandbox
         uses: QualiSystemsLab/colony-start-sb-action@v0.0.1
         with:
-          space: Trial
+          space: Shira
           blueprint_name: todo-app
-          colony_token: ${{ secrets.COLONY_TOKEN }}
+          colony_token: ${{ secrets.TORQUE_TOKEN }}
           duration: 60
           timeout: 10
           inputs: version=${{ github.event.inputs.version}}
@@ -44,9 +44,9 @@ jobs:
       - name: Stop sandbox
         uses: QualiSystemsLab/colony-end-sb-action@v0.0.1
         with:
-          space: Trial
+          space: Shira
           sandbox_id: ${{ steps.start-sandbox.outputs.sandbox_id }}
-          colony_token: ${{ secrets.COLONY_TOKEN }}
+          colony_token: ${{ secrets.TORQUE_TOKEN }}
   publish:
     needs: integration-test
     runs-on: ubuntu-latest
