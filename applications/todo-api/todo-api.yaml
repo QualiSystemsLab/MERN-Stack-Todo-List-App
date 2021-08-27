@@ -1,3 +1,5 @@
+---
+spec_version: 1
 kind: application
 inputs:
   - DB_URL
@@ -9,8 +11,8 @@ infrastructure:
       - port_info:
           port: 7000
   compute:
-    spec:        
-       kubernetes:
+    spec:
+      kubernetes:
         cpu: 250m
         ram: 64Mi
 configuration:
@@ -22,10 +24,8 @@ configuration:
     timeout: 100
     wait_for_ports: ALL
 source:
-  image:    
+  image:
     docker_image:
-       - name: colonysamples/todo-api
-         tag: $DOCKER_TAG
-         username: root
+      - name: colonysamples/todo-api
+        tag: $DOCKER_TAG
   os_type: linux
-spec_version: 1

@@ -1,3 +1,5 @@
+---
+spec_version: 1
 kind: application
 inputs:
   - API_URL
@@ -9,10 +11,10 @@ infrastructure:
       - port_info:
           port: 80
   compute:
-    spec:        
-       kubernetes:
+    spec:
+      kubernetes:
         cpu: 250m
-        ram: 64Mi 
+        ram: 64Mi
 configuration:
   initialization:
     script: todo-ui.sh
@@ -22,10 +24,8 @@ configuration:
     timeout: 100
     wait_for_ports: ALL
 source:
-  image:    
+  image:
     docker_image:
-       - name: colonysamples/todo-ui
-         tag: $DOCKER_TAG
-         username: root
-  os_type: linux
-spec_version: 1
+      - name: colonysamples/todo-ui
+        tag: $DOCKER_TAG
+        os_type: linux
