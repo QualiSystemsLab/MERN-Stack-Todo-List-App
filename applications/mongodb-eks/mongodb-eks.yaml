@@ -2,6 +2,10 @@
 spec_version: 1
 kind: application
 infrastructure:
+  connectivity:
+    internal:
+     - port_info:
+        port: 27017
   compute:
     spec:
       kubernetes:
