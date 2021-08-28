@@ -28,4 +28,4 @@ source:
     docker_image:
       - name: colonysamples/todo-ui
         tag: $DOCKER_TAG
-        os_type: linux
+  os_type: linux
