@@ -4,8 +4,8 @@ kind: application
 infrastructure:
   connectivity:
     internal:
-     - port_info:
-        port: 27017
+      - port_info:
+          port: 27017
   compute:
     spec:
       kubernetes:
