@@ -34,5 +34,4 @@ ingress:
     - http: 7000
       rules:
       - default: true
-        host: ${torque.environment.public_address}
         application: todo-api
