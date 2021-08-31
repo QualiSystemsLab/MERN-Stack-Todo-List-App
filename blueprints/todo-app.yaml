@@ -19,19 +19,22 @@ applications:
         - todo-api  
   - todo-api:
       input_values:
-        - DB_URL: $torque.applications.mongodb-eks.dns
+        - DB_URL: $torque.applications.mongodb.dns
         - DOCKER_TAG: $version
       depends_on:
-        - mongodb-eks
-  - mongodb-eks:
+        - mongodb
+  - mongodb:
 ingress:
   listeners:
     - http: 80
       rules:
-      - default: true
-        application: todo-ui
-        shortcut: ${torque.environment.public_address}
+        - application: todo-ui
+          port: 80
+          default: true
+          shortcut: ${torque.environment.public_address}
     - http: 7000
       rules:
-      - default: true
-        application: todo-api
+        - path: /todos
+          application: todo-api
+          port: 7000
+  

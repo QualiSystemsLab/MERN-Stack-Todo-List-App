@@ -1,33 +1,28 @@
 kind: application
 inputs:
-  - API_URL
-  - DOCKER_TAG
-
 infrastructure:
   connectivity:
     internal:
-      - port_info:
-          port: 80
-          path: ''
+     - port_info:
+        port: 27017
+        path: ''
+
   compute:
     spec:        
       kubernetes:
         cpu: 250m
 configuration:
-  initialization:
-    script: todo-ui.sh
   start:
-    script: todo-ui-command.sh
+    command: docker-entrypoint.sh mongod
   healthcheck:
-    timeout: 100
+    timeout: 1000
     wait_for_ports: ALL
-    #script: todo-ui-hc.sh
 source:
   image:    
     username: adminuser
     docker_image:
-       - name: colonysamples/todo-ui
-         tag: $DOCKER_TAG
+       - name: mongo
+         tag: 4.4.6
          username: root
   os_type: linux
 spec_version: 1
