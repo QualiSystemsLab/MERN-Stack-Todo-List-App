@@ -1,6 +1,7 @@
+---
 spec_version: 1
 kind: blueprint
-inputs: 
+inputs:
   - version:
       description: that will be used as the docker images tag
       default_value: latest
