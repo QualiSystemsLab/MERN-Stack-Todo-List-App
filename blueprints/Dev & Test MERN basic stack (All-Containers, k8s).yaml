@@ -7,7 +7,7 @@ inputs:
       optional: true
 metadata:
   description: >
-    EKS deployment of todo-app
+    3-tier Mongo + Express + React.js + Node.js (MERN stack) Application running on K8s
 clouds: 
   - AWS/EKS
 applications:
