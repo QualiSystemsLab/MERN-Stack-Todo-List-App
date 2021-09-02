@@ -1,15 +1,14 @@
----
 spec_version: 1
 kind: blueprint
-inputs:
+inputs: 
   - version:
       description: that will be used as the docker images tag
       default_value: latest
       optional: true
 metadata:
   description: >
-   Mongo + Express + React.js + Node.js (MERN stack) Application running on K8s
-clouds:
+    EKS deployment of todo-app
+clouds: 
   - AWS/EKS
 applications:
   - todo-ui:
@@ -17,7 +16,7 @@ applications:
         - API_URL: $torque.applications.todo-api.dns
         - DOCKER_TAG: $version
       depends_on:
-        - todo-api
+        - todo-api  
   - todo-api:
       input_values:
         - DB_URL: $torque.applications.mongodb.dns
@@ -38,3 +37,4 @@ ingress:
         - path: /todos
           application: todo-api
           port: 7000
+  
